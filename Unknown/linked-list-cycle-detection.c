@@ -14,3 +14,13 @@ class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         # cycle can be determined if we've been 'there' before
         # use a slow and fast ptr
+        # if fast ptr passes slow ptr, cycle has been detected
+        slow = fast = head
+        if head is None:
+            return False
+        while fast is not None and fast.next is not None:
+            slow=slow.next
+            fast=fast.next.next
+            if slow == fast:
+                return True
+        return False
