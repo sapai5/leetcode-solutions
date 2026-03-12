@@ -4,28 +4,28 @@
  * Date: 2026-03-12
  */
 
-class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
-        # for loop + two pointers
         ans = []
         nums.sort()
-        lo = 0
-        high = 0   
+        low = 0
+        high = 0
 
         for i in range(len(nums)):
-            while lo < high:
-                if total < 0:
-                    lo+=1
-                elif total > 0:
-                    high-=1
-                    ans.append([nums[lo], nums[high], nums[i]])
-            lo = i + 1
-            high = len(nums) - 1
-                total = nums[lo] + nums[high] + nums[i]
-                else:
-                    lo += 1
-                    high -=1
-                    while lo < high and nums[lo] == nums[lo-1]:
             if i > 0 and nums[i] == nums[i-1]:
                 continue
-                        lo +=1
+            while low < high:
+            low = i+1
+            high = len(nums) - 1
+                if total > 0:
+                    high-=1
+                elif total < 0:
+                    low+=1
+                else:
+                    ans.append([nums[i], nums[low], nums[high]])
+                    low+=1
+                    while low < high and nums[low] == nums[low-1]:
+                    high -=1
+                        low+=1
+        return ans
+
+        # for loop + two pointers
+                total = nums[i] + nums[low] + nums[high]
